@@ -1,0 +1,30 @@
+# def decorator(arg_func):
+#     def wrapper(*args):
+#         print("logic before main function")
+#         res = arg_func(*args)
+#         print("logic after")
+#         return res
+#     return wrapper
+#
+# def main_function(arg_1, arg_2):
+#     print(f"hellofrom main function {arg_1}, {arg_2}")
+
+# main_function = decorator(main_function)
+# main_function("argument_2", "argument_3")
+import time
+def decorator(arg_func):
+    def wrapper(*args):
+        time_now = time.time()
+        res = arg_func(*args)
+        time_now2 = time.time()
+        print(time_now2 - time_now)
+        return res
+
+    return wrapper
+def main_function(start, stop):
+    for i in range(start, stop):
+        print(i)
+
+main_function = decorator(main_function)
+main_function(1, 200)
+print(main_function)
